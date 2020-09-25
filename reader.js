@@ -114,6 +114,7 @@ class Reader {
   readString(size) {
     const decoder = new TextDecoder()
     const typedArray = this.dataView.buffer.slice(this.offset, this.offset + size)
+    this.offset += size
     return decoder.decode(typedArray)
   }
 
@@ -164,11 +165,7 @@ function read(definition, reader, level = 0) {
     for (let i = 0; i < count; i++) {
       let current 
       if (isNumeric(type)) {
-        current = reader.readNumeric(type)
-        if (id === 'n_cpoints') {
-          console.log(id, current)
-          throw new Error('Bullshit')
-        }
+        current = reader.readNumeric(type)        
       } else if (isString(type)) {
         if (isNullTerminatedString(type)) {
           current = reader.readNullTerminatedString()
