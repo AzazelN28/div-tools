@@ -1,0 +1,15 @@
+{
+  "name": "divweb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "AzazelN28 <asakon28@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "yaml": "^1.10.0"
+  }
+}
