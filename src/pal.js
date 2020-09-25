@@ -24,7 +24,7 @@ export function createRange() {
 }
 
 export function readRange(reader) {
-  const range = createRange()  
+  const range = createRange()
   range.numColors = reader.readNumeric('u1')
   range.type = reader.readNumeric('u1')
   range.fixed = reader.readNumeric('u1')
@@ -48,11 +48,11 @@ export function readSignature(reader) {
 }
 
 export function readFile(reader) {
-  const header = readSignature(reader)
+  const signature = readSignature(reader)
   const colors = readColors(reader)
   const ranges = readRanges(reader)
   return {
-    header,
+    signature,
     colors,
     ranges
   }

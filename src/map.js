@@ -15,7 +15,7 @@ export function readSignature(reader) {
 }
 
 export function readFile(reader) {
-  const header = readSignature(reader)
+  const signature = readSignature(reader)
   const width = reader.readNumeric('u2le')
   const height = reader.readNumeric('u2le')
   const code = reader.readNumeric('u4le')
@@ -31,7 +31,7 @@ export function readFile(reader) {
   }
   const pixels = reader.read(width * height)
   return {
-    header,
+    signature,
     width,
     height,
     code,

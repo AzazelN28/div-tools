@@ -31,21 +31,18 @@ export function readMap(reader) {
 }
 
 export function readFile(reader) {
-  const header = readSignature(reader)
-  console.log(header)
+  const signature = readSignature(reader)
   const palette = {
     colors: readColors(reader),
     ranges: readRanges(reader),
   }
-  console.log(palette)
   const maps = []
   while (reader.bytesAvailable) {
     const map = readMap(reader)
-    console.log(maps.length, map)
     maps.push(map)
   }
   return {
-    header,
+    signature,
     palette,
     maps,
   }
