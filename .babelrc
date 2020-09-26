@@ -3,5 +3,10 @@
     "targets": {
       "node": "14.11.0"
     }
-  }]]
+  }]],
+  "plugins": [
+    ["@babel/plugin-transform-runtime", {
+      "regenerator": false
+    }]
+  ]
 }

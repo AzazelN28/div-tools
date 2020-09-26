@@ -64,11 +64,18 @@ export default class Reader {
     }
   }
 
-  constructor(arrayBuffer, byteOffset, byteLength) {
+  constructor({
+    arrayBuffer,
+    byteOffset = 0,
+    byteLength = 0,
+    endian = Endian.BIG,
+    encoding = 'utf-8',
+    offset = 0
+  }) {
     this.dataView = new DataView(arrayBuffer, byteOffset, byteLength)
-    this.endian = Endian.LITTLE
-    this.encoding = 'utf8'
-    this.offset = 0
+    this.endian = endian
+    this.encoding = encoding
+    this.offset = offset
   }
 
   get bytesAvailable() {
@@ -99,7 +106,7 @@ export default class Reader {
   }
 
   readString(size) {
-    const decoder = new TextDecoder()
+    const decoder = new TextDecoder(this.encoding)
     const typedArray = this.dataView.buffer.slice(
       this.offset,
       this.offset + size
@@ -120,7 +127,7 @@ export default class Reader {
       if (isReading) {
         array.push(charCode)
       }
-    } while (this.offset < end);
+    } while (this.offset < end)
     const typedArray = new Uint8Array(array)
     const decoder = new TextDecoder()
     return decoder.decode(typedArray)
@@ -128,13 +135,18 @@ export default class Reader {
 
   readNullTerminatedString() {
     const array = []
+    let charCode
     do {
-      const charCode = this.dataView.getUint8(this.offset++)
+      charCode = this.dataView.getUint8(this.offset++)
       array.push(charCode)
     } while (charCode !== 0)
     const typedArray = new Uint8Array(array)
     const decoder = new TextDecoder()
     return decoder.decode(typedArray)
+  }
+
+  from(offset, size) {
+    return this.dataView.buffer.slice(offset, offset + size)
   }
 
   read(size) {

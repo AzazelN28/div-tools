@@ -1,11 +1,11 @@
 import { readColors, readRanges } from './pal'
 import { readPoint } from './map'
 
-export function readSignature(reader) {
+export function readSignature (reader) {
   return reader.readContents('fpg\x1A\x0D\x0A\x00\x00')
 }
 
-export function readMap(reader) {
+export function readMap (reader) {
   const code = reader.readNumeric('u4le')
   const length = reader.readNumeric('u4le')
   const description = reader.readFixedLengthString(32)
@@ -26,15 +26,15 @@ export function readMap(reader) {
     width,
     height,
     points,
-    pixels,
+    pixels
   }
 }
 
-export function readFile(reader) {
+export function readFile (reader) {
   const signature = readSignature(reader)
   const palette = {
     colors: readColors(reader),
-    ranges: readRanges(reader),
+    ranges: readRanges(reader)
   }
   const maps = []
   while (reader.bytesAvailable) {
@@ -44,15 +44,15 @@ export function readFile(reader) {
   return {
     signature,
     palette,
-    maps,
+    maps
   }
 }
 
-export function writeFile(writer, fpg) {}
+export function writeFile (writer, fpg) {}
 
 export default {
   readSignature,
   readMap,
   readFile,
-  writeFile,
+  writeFile
 }

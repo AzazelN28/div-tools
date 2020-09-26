@@ -8,7 +8,10 @@ export function readVertex(reader) {
   const y = reader.readNumeric('s4le')
   const links = reader.readNumeric('u4le')
   return {
-    active, x, y, links
+    active,
+    x,
+    y,
+    links
   }
 }
 
@@ -24,7 +27,16 @@ export function readWall(reader) {
   const textureBottom = reader.readNumeric('s4le')
   const fade = reader.readNumeric('u4le')
   return {
-    active, type, vertexStart, vertexEnd, regionFront, regionBack, textureMiddle, textureTop, textureBottom, fade
+    active,
+    type,
+    vertexStart,
+    vertexEnd,
+    regionFront,
+    regionBack,
+    textureMiddle,
+    textureTop,
+    textureBottom,
+    fade
   }
 }
 
@@ -37,7 +49,13 @@ export function readRegion(reader) {
   const textureCeiling = reader.readNumeric('s4le')
   const fade = reader.readNumeric('u4le')
   return {
-    active, type, heightFloor, heightCeiling, textureFloor, textureCeiling, fade
+    active,
+    type,
+    heightFloor,
+    heightCeiling,
+    textureFloor,
+    textureCeiling,
+    fade
   }
 }
 
@@ -47,7 +65,10 @@ export function readFlag(reader) {
   const y = reader.readNumeric('s4le')
   const number = reader.readNumeric('s4le')
   return {
-    active, x, y, number
+    active,
+    x,
+    y,
+    number
   }
 }
 
@@ -97,7 +118,11 @@ export function readVPEVertex(reader) {
   const path = reader.readNumeric('s2le')
   const link = reader.readNumeric('s2le')
   return {
-    type, x, y, path, link
+    type,
+    x,
+    y,
+    path,
+    link
   }
 }
 
@@ -146,9 +171,16 @@ export function readVPERegion(reader) {
   const fade = reader.readNumeric('s2le')
   const tag = reader.readNumeric('s2le')
   return {
-    type, heightFloor, heightCeiling,
-    regionBelow,regionAbove,textureFloor,textureCeiling,
-    effect,fade,tag
+    type,
+    heightFloor,
+    heightCeiling,
+    regionBelow,
+    regionAbove,
+    textureFloor,
+    textureCeiling,
+    effect,
+    fade,
+    tag
   }
 }
 
@@ -211,7 +243,7 @@ export function readVPE(reader) {
     effect,
     angle,
     view,
-    force,
+    force
   }
 }
 

@@ -1,12 +1,12 @@
 import fs from 'fs'
 import Endian from './Endian'
 import Reader from './Reader'
-import map from './map'
+import fnt from './fnt'
 
-describe('MAP', () => {
-  it('should read a MAP file', async () => {
+describe('FNT', () => {
+  it('should read a FNT file', async () => {
     const { buffer, byteOffset, length } = await fs.promises.readFile(
-      'samples/NOID.MAP'
+      'samples/NOID.FNT'
     )
     const reader = new Reader({
       arrayBuffer: buffer,
@@ -15,11 +15,11 @@ describe('MAP', () => {
       endian: Endian.LITTLE,
       encoding: 'Windows-1252'
     })
-    const data = map.readFile(reader)
+    const data = fnt.readFile(reader)
     expect(data).to.have.deep.property('signature', [
-      'm',
-      'a',
-      'p',
+      'f',
+      'n',
+      't',
       '\u001a',
       '\r',
       '\n',

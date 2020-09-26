@@ -6,12 +6,10 @@ export function readPoint(reader) {
   return { x, y }
 }
 
-export function readPoints(reader) {
-
-}
+export function readPoints(reader) {}
 
 export function readSignature(reader) {
-  return reader.readContents("map\x1A\x0D\x0A\x00\x00");
+  return reader.readContents('map\x1A\x0D\x0A\x00\x00')
 }
 
 export function readFile(reader) {
@@ -42,9 +40,7 @@ export function readFile(reader) {
   }
 }
 
-export function writeFile(writer) {
-
-}
+export function writeFile (writer) {}
 
 export default {
   readPoint,

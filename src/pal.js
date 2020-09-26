@@ -1,7 +1,7 @@
 export function readColor(reader) {
-  const r = reader.readNumeric("u1");
-  const g = reader.readNumeric("u1");
-  const b = reader.readNumeric("u1");
+  const r = reader.readNumeric('u1')
+  const g = reader.readNumeric('u1')
+  const b = reader.readNumeric('u1')
   return { r, g, b }
 }
 
@@ -44,7 +44,7 @@ export function readRanges(reader) {
 }
 
 export function readSignature(reader) {
-  return reader.readContents("pal\x1A\x0D\x0A\x00\x00");
+  return reader.readContents('pal\x1A\x0D\x0A\x00\x00')
 }
 
 export function readFile(reader) {
@@ -58,9 +58,7 @@ export function readFile(reader) {
   }
 }
 
-export function writeFile(writer, pal) {
-
-}
+export function writeFile(writer, pal) {}
 
 export default {
   readColors,
