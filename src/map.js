@@ -17,7 +17,7 @@ export function readFile(reader) {
   const width = reader.readNumeric('u2le')
   const height = reader.readNumeric('u2le')
   const code = reader.readNumeric('u4le')
-  const description = reader.readString(32)
+  const description = reader.readFixedLengthString(32)
   const palette = {
     colors: readColors(reader),
     ranges: readRanges(reader)

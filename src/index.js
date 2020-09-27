@@ -3,8 +3,10 @@ import fpg from './fpg'
 import map from './map'
 import pal from './pal'
 import wld from './wld'
-import Reader from './Reader'
-import Endian from './Endian'
+import Reader from './io/Reader'
+import Writer from './io/Writer'
+import Endian from './io/Endian'
+import Op from './io/Op'
 
 export default {
   fnt,
@@ -12,6 +14,8 @@ export default {
   map,
   pal,
   wld,
+  Writer,
   Reader,
-  Endian
+  Endian,
+  Op
 }

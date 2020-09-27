@@ -1,6 +1,6 @@
 import fs from 'fs'
-import Endian from './Endian'
-import Reader from './Reader'
+import Endian from './io/Endian'
+import Reader from './io/Reader'
 import pal from './pal'
 
 describe('PAL', () => {

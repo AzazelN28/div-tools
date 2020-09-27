@@ -1,31 +1,11 @@
 import Endian from './Endian'
-
-/**
- * @constant {RegExp}
- */
-const numericRE = /^([fsu])([1248])(le|be)?$/
-
-/**
- * @constant {RegExp}
- */
-const stringRE = /^strz?$/
+import Op from './Op'
+import Types from './Types'
 
 /**
  * Esta clase se encarga de leer de un DataView.
  */
 export default class Reader {
-  static isNumeric(value) {
-    return numericRE.test(value)
-  }
-
-  static isString(value) {
-    return stringRE.test(value)
-  }
-
-  static isNullTerminatedString(value) {
-    return value === 'strz'
-  }
-
   static normalize(contents) {
     return contents.flatMap((v) => {
       if (typeof v === 'string') {
@@ -35,33 +15,6 @@ export default class Reader {
       }
       return v
     })
-  }
-
-  static getNumericDescription(value) {
-    const matches = value.match(numericRE)
-    if (matches) {
-      const [, type, size, endian] = matches
-      return { type, size: parseInt(size, 10), endian }
-    }
-  }
-
-  static getNumericMethodName({ type, size }) {
-    switch (type) {
-      case 's':
-        if (size >= 8) {
-          return `getBigInt${size * 8}`
-        }
-        return `getInt${size * 8}`
-      case 'u':
-        if (size >= 8) {
-          return `getBigUint${size * 8}`
-        }
-        return `getUint${size * 8}`
-      case 'f':
-        return `getFloat${size * 8}`
-      default:
-        throw new Error('Unknown type')
-    }
   }
 
   constructor({
@@ -105,16 +58,6 @@ export default class Reader {
     return contents
   }
 
-  readString(size) {
-    const decoder = new TextDecoder(this.encoding)
-    const typedArray = this.dataView.buffer.slice(
-      this.offset,
-      this.offset + size
-    )
-    this.offset += size
-    return decoder.decode(typedArray)
-  }
-
   readFixedLengthString(size) {
     const end = this.offset + size
     const array = []
@@ -156,14 +99,14 @@ export default class Reader {
   }
 
   readNumeric(numericType) {
-    const description = Reader.getNumericDescription(numericType)
+    const description = Types.getNumericDescription(numericType)
     if (!description) {
       throw new Error(
         `Cannot retrieve numeric description for '${numericType}'`
       )
     }
     const { type, size, endian } = description
-    const methodName = Reader.getNumericMethodName({ type, size })
+    const methodName = Types.getNumericMethodName({ op: Op.GET, type, size })
     const isLittleEndian = (endian || this.endian) === Endian.LITTLE
     const value = this.dataView[methodName](this.offset, isLittleEndian)
     this.offset += size
