@@ -68,7 +68,9 @@ export default class Reader {
     let charCode
     do {
       charCode = this.dataView.getUint8(this.offset++)
-      array.push(charCode)
+      if (charCode !== 0) {
+        array.push(charCode)
+      }
     } while (charCode !== 0)
     const typedArray = new Uint8Array(array)
     const decoder = new TextDecoder()
