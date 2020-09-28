@@ -6,26 +6,13 @@ import Types from './Types'
  * Esta clase se encarga de leer de un DataView.
  */
 export default class Reader {
-  static normalize(contents) {
-    return contents.flatMap((v) => {
-      if (typeof v === 'string') {
-        const encoder = new TextEncoder()
-        const typedArray = encoder.encode(v)
-        return [...typedArray]
-      }
-      return v
-    })
-  }
-
   constructor({
-    arrayBuffer,
-    byteOffset = 0,
-    byteLength = 0,
+    dataView,
     endian = Endian.BIG,
     encoding = 'utf-8',
     offset = 0
   }) {
-    this.dataView = new DataView(arrayBuffer, byteOffset, byteLength)
+    this.dataView = dataView
     this.endian = endian
     this.encoding = encoding
     this.offset = offset
@@ -47,7 +34,7 @@ export default class Reader {
     if (typeof contents === 'string') {
       return this.readContents(contents.split(''))
     }
-    const normalized = Reader.normalize(contents)
+    const normalized = Types.normalize(contents)
     for (let i = 0; i < normalized.length; i++) {
       const value = this.dataView.getUint8(this.offset + i)
       if (value !== normalized[i]) {
@@ -88,10 +75,23 @@ export default class Reader {
     return decoder.decode(typedArray)
   }
 
+  /**
+   * Devuelve un ArrayBuffer desde la posición y el
+   * tamaño indicados.
+   * @param {number} offset
+   * @param {number} size
+   * @returns {ArrayBuffer}
+   */
   from(offset, size) {
     return this.dataView.buffer.slice(offset, offset + size)
   }
 
+  /**
+   * Devuelve un ArrayBuffer del tamaño indicado
+   * desde la posición actual.
+   * @param {number} size
+   * @returns {ArrayBuffer}
+   */
   read(size) {
     const value = this.dataView.buffer.slice(this.offset, this.offset + size)
     this.offset += size
@@ -111,5 +111,26 @@ export default class Reader {
     const value = this.dataView[methodName](this.offset, isLittleEndian)
     this.offset += size
     return value
+  }
+
+  readObject(sequence) {
+    const object = {}
+    for (const item of sequence) {
+      const { name, type, size } = item
+      let value
+      if (Types.isNumeric(type)) {
+        value = this.readNumeric(type)
+      } else if (Types.isString(type)) {
+        if (type === 'str') {
+          value = this.readFixedLengthString(size)
+        } else if (type === 'strz') {
+          value = this.readNullTerminatedString()
+        }
+      } else {
+        throw new Error(`Invalid type "${type}"`)
+      }
+      object[name] = value
+    }
+    return object
   }
 }

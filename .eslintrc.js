@@ -17,6 +17,7 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
+    'operator-linebreak': ['error', 'before'],
     'space-before-function-paren': 'off'
   }
 }

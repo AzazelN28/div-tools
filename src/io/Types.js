@@ -9,6 +9,17 @@ const numericRE = /^([fsu])([1248])(le|be)?$/
 const stringRE = /^strz?$/
 
 export default {
+  normalize(contents) {
+    return contents.flatMap((v) => {
+      if (typeof v === 'string') {
+        const encoder = new TextEncoder()
+        const typedArray = encoder.encode(v)
+        return [...typedArray]
+      }
+      return v
+    })
+  },
+
   isNumeric(value) {
     return numericRE.test(value)
   },

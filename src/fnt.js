@@ -1,4 +1,4 @@
-import { readColors, readRanges } from './pal'
+import { readColors, readRanges, writeColors, writeRanges } from './pal'
 
 export function readSignature (reader) {
   return reader.readContents('fnt\x1A\x0D\x0A\x00\x00')
@@ -60,8 +60,50 @@ export function readFile (reader) {
   }
 }
 
-export function writeFile (writer, fnt) {
+export function writeSignature(writer) {
+  return writer.readContents('fnt\x1A\x0D\x0A\x00\x00')
+}
 
+export function writeCharset(writer, {
+  numbers,
+  uppercase,
+  lowercase,
+  symbols,
+  extended
+}) {
+  const charset = (numbers & 0x01) << 5
+  | (uppercase & 0x01) << 4
+  | (lowercase & 0x01) << 3
+  | (symbols & 0x01) << 2
+  | (extended & 0x01) << 1
+  return writer.writeNumeric('u4le', charset)
+}
+
+export function writeCharacter(writer, { width, height, incY, offset, pixels }) {
+  return writer
+    .writeNumeric('u4le', width)
+    .writeNumeric('u4le', height)
+    .writeNumeric('s4le', incY)
+    .writeNumeric('u4le', offset)
+    .to(offset, width * height, pixels)
+}
+
+export function writeCharacters(writer, characters) {
+  if (characters.length !== 256) {
+    throw new Error('Invalid characters length, it must be 256')
+  }
+  for (const character of characters) {
+    writeCharacter(writer, character)
+  }
+  return writer
+}
+
+export function writeFile (writer, fnt) {
+  writeSignature(writer)
+  writeColors(writer, fnt.palette.colors)
+  writeRanges(writer, fnt.palette.ranges)
+  writeCharset(writer, fnt.charset)
+  writeCharacters(writer, fnt.characters)
 }
 
 export default {
@@ -70,5 +112,9 @@ export default {
   readCharacter,
   readCharacters,
   readFile,
+  writeSignature,
+  writeCharset,
+  writeCharacter,
+  writeCharacters,
   writeFile
 }

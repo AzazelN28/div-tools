@@ -1,28 +1,20 @@
 import fs from 'fs'
 import Endian from './io/Endian'
 import Reader from './io/Reader'
-import fpg from './fpg'
+import a3d from './a3d'
 
-describe('FPG', () => {
-  it('should read a FPG file', async () => {
+describe('A3D', () => {
+  it('should read a A3D file', async () => {
     const { buffer, byteOffset, length } = await fs.promises.readFile(
-      'samples/WLD_VIEW.FPG'
+      'samples/MUJER/ANIM.A3D'
     )
     const reader = new Reader({
       dataView: new DataView(buffer, byteOffset, length),
       endian: Endian.LITTLE,
       encoding: 'Windows-1252'
     })
-    const data = fpg.readFile(reader)
-    expect(data).to.have.deep.property('signature', [
-      'f',
-      'p',
-      'g',
-      '\u001a',
-      '\r',
-      '\n',
-      '\u0000',
-      '\u0000'
-    ])
+    const data = a3d.readFile(reader)
+    // console.log(data)
+    expect(data).to.have.property('signature')
   })
 })

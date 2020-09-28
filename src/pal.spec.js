@@ -9,9 +9,7 @@ describe('PAL', () => {
       'samples/DIV2.PAL'
     )
     const reader = new Reader({
-      arrayBuffer: buffer,
-      byteOffset,
-      byteLength: length,
+      dataView: new DataView(buffer, byteOffset, length),
       endian: Endian.LITTLE,
       encoding: 'Windows-1252'
     })

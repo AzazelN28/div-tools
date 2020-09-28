@@ -9,9 +9,7 @@ describe('FNT', () => {
       'samples/NOID.FNT'
     )
     const reader = new Reader({
-      arrayBuffer: buffer,
-      byteOffset,
-      byteLength: length,
+      dataView: new DataView(buffer, byteOffset, length),
       endian: Endian.LITTLE,
       encoding: 'Windows-1252'
     })

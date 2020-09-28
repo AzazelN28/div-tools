@@ -1,7 +1,9 @@
 import fs from 'fs'
 import Endian from './io/Endian'
 import Reader from './io/Reader'
+import Writer from './io/Writer'
 import wld from './wld'
+import fixture from '../test/fixtures/wld.json'
 
 describe('WLD', () => {
   it('should read a WLD file', async () => {
@@ -9,9 +11,7 @@ describe('WLD', () => {
       'samples/WLD_VIEW.WLD'
     )
     const reader = new Reader({
-      arrayBuffer: buffer,
-      byteOffset,
-      byteLength: length,
+      dataView: new DataView(buffer, byteOffset, length),
       endian: Endian.LITTLE,
       encoding: 'Windows-1252'
     })
@@ -26,5 +26,17 @@ describe('WLD', () => {
       '\u0001',
       '\u0000'
     ])
+  })
+
+  it('should create a size estimator for a WLD file', async () => {
+    const estimator = Writer.createEstimator({
+      endian: Endian.LITTLE,
+      encoding: 'Windows-1252'
+    })
+    wld.writeWld(estimator, fixture)
+    fixture.offset = estimator.byteLength + 12
+    estimator.offset = 0
+    wld.writeFile(estimator, fixture)
+    console.log(estimator.byteLength)
   })
 })
