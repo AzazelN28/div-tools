@@ -2,7 +2,7 @@
   "name": "@divgs/io",
   "version": "1.0.0",
   "description": "DIV Games Studio file I/O",
-  "main": "index.js",
+  "main": "dist/lib.js",
   "scripts": {
     "build": "rollup -c",
     "lint": "eslint src/**/*.js",

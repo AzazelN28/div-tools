@@ -3,7 +3,7 @@ meta:
   file-extension: wld
   encoding: ascii #cp850
   endian: le
-  
+
 types:
   point:
     seq:
@@ -47,7 +47,7 @@ types:
         type: s4
       - id: ceil_height
         type: s4
-      - id: floor_tex  
+      - id: floor_tex
         type: s4
       - id: ceil_tex
         type: s4
@@ -100,6 +100,8 @@ types:
           - id: fade  # 0-16
             type: s2
           - id: tag   # siempre 0
+            type: s2
+          - id: padding # ¿Padding para que cuadre en *4 bytes?
             type: s2
       vpe_wall:
         seq:
@@ -218,7 +220,7 @@ seq:
     size: 256
   - id: fpg_name
     type: strz
-    size: 16  
+    size: 16
   - id: num_points
     type: s4
   - id: points
