@@ -170,6 +170,7 @@ export function readVPERegion(reader) {
   const effect = reader.readFixedLengthString(10)
   const fade = reader.readNumeric('s2le')
   const tag = reader.readNumeric('s2le')
+  const padding = reader.readNumeric('s2le')
   return {
     type,
     heightFloor,
@@ -180,7 +181,8 @@ export function readVPERegion(reader) {
     textureCeiling,
     effect,
     fade,
-    tag
+    tag,
+    padding
   }
 }
 
@@ -223,10 +225,10 @@ export function readVPE(reader) {
     flags.push(readVPEFlag(reader))
   }
   const title = reader.readFixedLengthString(24)
-  const palette = reader.readFixedLengthString(12)
+  const palette = reader.readFixedLengthString(9)
   const textureScreen = reader.readNumeric('s4le')
   const textureBack = reader.readNumeric('s4le')
-  const effect = reader.readFixedLengthString(10)
+  const effect = reader.readFixedLengthString(9)
   const angle = reader.readNumeric('s2le')
   const view = reader.readNumeric('s2le')
   const force = readVPEForce(reader)
@@ -350,6 +352,7 @@ export function writeVPERegion(writer, {
     .writeFixedLengthString(10, effect)
     .writeNumeric('s2le', fade)
     .writeNumeric('s2le', tag)
+    .writeNumeric('s2le', 0)
 }
 
 export function writeVPEFlag(writer, { x, y, number }) {
@@ -387,7 +390,7 @@ export function writeVPE(writer, { vertices, regions, walls, flags, title, palet
   }
   writer
     .writeFixedLengthString(24, title)
-    .writeFixedLengthString(12, palette)
+    .writeFixedLengthString(9, palette)
     .writeNumeric('s4le', textureScreen)
     .writeNumeric('s4le', textureBack)
     .writeFixedLengthString(10, effect)
