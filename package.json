@@ -6,8 +6,8 @@
   "scripts": {
     "build": "rollup -c",
     "lint": "eslint src/**/*.js",
-    "docs": "jsdoc -t node_modules/minami -d docs -r src",
-    "docs:serve": "jsdoc -t node_modules/minami -d docs -r src && serve docs",
+    "docs": "jsdoc -R README.md -t node_modules/minami -d docs -r src",
+    "docs:serve": "jsdoc -R README.md -t node_modules/minami -d docs -r src && serve docs",
     "test": "mocha --require @babel/register --require ./test/setup.js --recursive 'src/**/*.spec.js'"
   },
   "keywords": [
