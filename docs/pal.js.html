@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>pal.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="module-io.DryDataView.html">DryDataView</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="module-io.Reader.html">Reader</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Reader.html#from">from</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Reader.html#read">read</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Reader.html#readContents">readContents</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Reader.html#readFixedLengthString">readFixedLengthString</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Reader.html#readNullTerminatedString">readNullTerminatedString</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Reader.html#readNumeric">readNumeric</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Reader.html#readObject">readObject</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="module-io.Writer.html">Writer</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Writer.html#.createEstimator">createEstimator</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Writer.html#to">to</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Writer.html#write">write</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Writer.html#writeContents">writeContents</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Writer.html#writeFixedLengthString">writeFixedLengthString</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Writer.html#writeNullTerminatedString">writeNullTerminatedString</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Writer.html#writeNumeric">writeNumeric</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Writer.html#writeObject">writeObject</a></span></li><li class="nav-heading">Modules</li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-a3d.html">a3d</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-a3d.html#.readFile">readFile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-a3d.html#.readFrame">readFrame</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-a3d.html#.readMatrix">readMatrix</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-a3d.html#.readSignature">readSignature</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-fnt.html">fnt</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-fnt.html#.readCharacter">readCharacter</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-fnt.html#.readCharset">readCharset</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-fnt.html#.readSignature">readSignature</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-fpg.html">fpg</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-fpg.html#.readFile">readFile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-fpg.html#.readMap">readMap</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-fpg.html#.readSignature">readSignature</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-fpg.html#.writeFile">writeFile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-fpg.html#.writeMap">writeMap</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-fpg.html#.writeSignature">writeSignature</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-image.html">image</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-image.html#.findNearestColor">findNearestColor</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-image.html#.fromIndexed">fromIndexed</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-image.html#.toIndexed">toIndexed</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-io.html">io</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-map.html">map</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-map.html#.readPoint">readPoint</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-map.html#.readPoints">readPoints</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-map.html#.readSignature">readSignature</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-o3d.html">o3d</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readBoundingBox">readBoundingBox</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readColor">readColor</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readFace">readFace</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readFile">readFile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readFrame">readFrame</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readMaterial">readMaterial</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readMatrix">readMatrix</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readMesh">readMesh</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readSignature">readSignature</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readTape">readTape</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readVector2">readVector2</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readVector3">readVector3</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readVertex">readVertex</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-pal.html">pal</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.createColor">createColor</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.createColors">createColors</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.createRange">createRange</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.createRanges">createRanges</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.readColor">readColor</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.readColors">readColors</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.readFile">readFile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.readRange">readRange</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.readRanges">readRanges</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.readSignature">readSignature</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.writeColor">writeColor</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.writeColors">writeColors</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.writeFile">writeFile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.writeRange">writeRange</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.writeRanges">writeRanges</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.writeSignature">writeSignature</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-pcm.html">pcm</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pcm.html#.readFile">readFile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pcm.html#.writeFile">writeFile</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-wld.html">wld</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.createVPEFlag">createVPEFlag</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.createVPERegion">createVPERegion</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.createVPEVertex">createVPEVertex</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.createVPEWall">createVPEWall</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readFile">readFile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readFlag">readFlag</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readGeom">readGeom</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readRegion">readRegion</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readSignature">readSignature</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readVertex">readVertex</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readVPE">readVPE</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readVPEFlag">readVPEFlag</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readVPEForce">readVPEForce</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readVPERegion">readVPERegion</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readVPESignature">readVPESignature</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readVPEVertex">readVPEVertex</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readVPEWall">readVPEWall</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readWall">readWall</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeFile">writeFile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeFlag">writeFlag</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeGeom">writeGeom</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeRegion">writeRegion</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeSignature">writeSignature</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeVertex">writeVertex</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeVPE">writeVPE</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeVPEFlag">writeVPEFlag</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeVPEForce">writeVPEForce</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeVPERegion">writeVPERegion</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeVPESignature">writeVPESignature</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeVPEVertex">writeVPEVertex</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeVPEWall">writeVPEWall</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeWall">writeWall</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeWld">writeWld</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">pal.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @module pal
+ */
+
+/**
+ * @typedef {Object} Pal
+ * @property {Signature} signature
+ * @property {Array&lt;Color>} colors
+ * @property {Array&lt;Range>} ranges
+ */
+
+/**
+ * Firma del archivo .pal
+ * @constant {string}
+ */
+export const SIGNATURE = 'pal\x1A\x0D\x0A\x00\x00'
+
+/**
+ * Número de colores por paleta
+ * @constant {number}
+ */
+export const COLORS_PER_PALETTE = 256
+
+/**
+ * Número de gamas por paleta
+ * @constant {number}
+ */
+export const RANGES_PER_PALETTE = 16
+
+/**
+ * Número de colores por gama
+ * @constant {number}
+ */
+export const COLORS_PER_RANGE = 32
+
+/**
+ * Crea un nuevo color
+ * @param {number} r
+ * @param {number} g
+ * @param {number} b
+ * @returns {Color}
+ */
+export function createColor(r = 0, g = 0, b = 0) {
+  return { r, g, b }
+}
+
+/**
+ * Crea una lista de 256 colores
+ * @returns {Array&lt;Color>}
+ */
+export function createColors() {
+  const colors = []
+  for (let i = 0; i &lt; COLORS_PER_PALETTE; i++) {
+    colors[i] = createColor()
+  }
+  return colors
+}
+
+/**
+ * Crea una gama de colores
+ * @returns {Range}
+ */
+export function createRange() {
+  const colors = []
+  for (let i = 0; i &lt; COLORS_PER_RANGE; i++) {
+    colors[i] = 0
+  }
+  return {
+    numColors: 0,
+    type: 0,
+    fixed: 0,
+    black: 0,
+    colors
+  }
+}
+
+/**
+ * Crea una lista de gamas de colores
+ * @returns {Array&lt;Range>}
+ */
+export function createRanges() {
+  const ranges = []
+  for (let i = 0; i &lt; RANGES_PER_PALETTE; i++) {
+    ranges[i] = createRange()
+  }
+  return ranges
+}
+
+/**
+ * Lee un color
+ * @param {Reader} reader
+ * @returns {Color}
+ */
+export function readColor(reader) {
+  const r = reader.readNumeric('u1')
+  const g = reader.readNumeric('u1')
+  const b = reader.readNumeric('u1')
+  return { r, g, b }
+}
+
+/**
+ * Leemos una lista de 256 colores
+ * @param {Reader} reader
+ * @returns {Array&lt;Color>}
+ */
+export function readColors(reader) {
+  const palette = []
+  for (let i = 0; i &lt; COLORS_PER_PALETTE; i++) {
+    palette.push(readColor(reader))
+  }
+  return palette
+}
+
+/**
+ * Leemos una gama de colores
+ * @param {Reader} reader
+ * @returns {Range}
+ */
+export function readRange(reader) {
+  const range = createRange()
+  range.numColors = reader.readNumeric('u1')
+  range.type = reader.readNumeric('u1')
+  range.fixed = reader.readNumeric('u1')
+  range.black = reader.readNumeric('u1')
+  for (let j = 0; j &lt; COLORS_PER_RANGE; j++) {
+    range.colors[j] = reader.readNumeric('u1')
+  }
+  return range
+}
+
+/**
+ * Leemos una lista de gamas de colores
+ * @param {Reader} reader
+ * @returns {Array&lt;Range>}
+ */
+export function readRanges(reader) {
+  const ranges = []
+  for (let i = 0; i &lt; RANGES_PER_PALETTE; i++) {
+    ranges.push(readRange(reader))
+  }
+  return ranges
+}
+
+/**
+ * Leemos la "firma" de un archivo .pal
+ * @param {Reader} reader
+ * @returns {Signature}
+ */
+export function readSignature(reader) {
+  return reader.readContents(SIGNATURE)
+}
+
+/**
+ * Leemos una paleta.
+ * @param {Reader} reader
+ * @returns {Pal}
+ */
+export function readFile(reader) {
+  const signature = readSignature(reader)
+  const colors = readColors(reader)
+  const ranges = readRanges(reader)
+  return {
+    signature,
+    colors,
+    ranges
+  }
+}
+
+/**
+ * Escribimos la firma de un archivo .pal
+ * @param {Writer} writer
+ * @returns {Writer}
+ */
+export function writeSignature(writer) {
+  return writer.writeContents(SIGNATURE)
+}
+
+/**
+ * Escribimos un color de la paleta.
+ * @param {Writer} writer
+ * @param {Color} color
+ * @returns {Writer}
+ */
+export function writeColor(writer, { r, g, b }) {
+  return writer
+    .writeNumeric('u1', r)
+    .writeNumeric('u1', g)
+    .writeNumeric('u1', b)
+}
+
+/**
+ * Escribimos los colores de una paleta.
+ * @param {Writer} writer
+ * @param {Array&lt;Color>} colors
+ * @returns {Writer}
+ */
+export function writeColors(writer, colors) {
+  if (colors.length !== COLORS_PER_RANGE) {
+    throw new Error('Invalid palette length, it must be 256')
+  }
+  for (const color of colors) {
+    writeColor(writer, color)
+  }
+  return writer
+}
+
+/**
+ * Escribimos una gama
+ * @param {Writer} writer
+ * @param {Range} range
+ * @returns {Writer}
+ */
+export function writeRange(writer, { numColors, type, fixed, black, colors }) {
+  writer
+    .writeNumeric('u1', numColors)
+    .writeNumeric('u1', type)
+    .writeNumeric('u1', fixed)
+    .writeNumeric('u1', black)
+  if (colors.length !== COLORS_PER_RANGE) {
+    throw new Error('Invalid range colors length, it must be 32')
+  }
+  for (const color of colors) {
+    writer.writeNumeric('u1', color)
+  }
+  return writer
+}
+
+/**
+ * Escribimos las gamas de la paleta.
+ * @param {Writer} writer
+ * @param {Array&lt;Range>} ranges
+ * @returns {Writer}
+ */
+export function writeRanges(writer, ranges) {
+  for (const range of ranges) {
+    writeRanges(writer, range)
+  }
+  return writer
+}
+
+/**
+ * Escribimos una paleta.
+ * @param {Writer} writer
+ * @param {Pal} pal
+ * @returns {Writer}
+ */
+export function writeFile(writer, pal) {
+  writeSignature(writer)
+  writeColors(writer, pal.colors)
+  writeRanges(writer, pal.ranges)
+  return writer
+}
+
+export default {
+  createColor,
+  createColors,
+  createRange,
+  createRanges,
+  readColor,
+  readColors,
+  readRange,
+  readRanges,
+  readSignature,
+  readFile,
+  writeColor,
+  writeColors,
+  writeRange,
+  writeRanges,
+  writeSignature,
+  writeFile
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Tue Sep 29 2020 12:34:02 GMT+0200 (GMT+02:00) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

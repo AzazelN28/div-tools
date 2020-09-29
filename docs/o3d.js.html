@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>o3d.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="module-io.DryDataView.html">DryDataView</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="module-io.Reader.html">Reader</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Reader.html#from">from</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Reader.html#read">read</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Reader.html#readContents">readContents</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Reader.html#readFixedLengthString">readFixedLengthString</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Reader.html#readNullTerminatedString">readNullTerminatedString</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Reader.html#readNumeric">readNumeric</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Reader.html#readObject">readObject</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="module-io.Writer.html">Writer</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Writer.html#.createEstimator">createEstimator</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Writer.html#to">to</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Writer.html#write">write</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Writer.html#writeContents">writeContents</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Writer.html#writeFixedLengthString">writeFixedLengthString</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Writer.html#writeNullTerminatedString">writeNullTerminatedString</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Writer.html#writeNumeric">writeNumeric</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-io.Writer.html#writeObject">writeObject</a></span></li><li class="nav-heading">Modules</li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-a3d.html">a3d</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-a3d.html#.readFile">readFile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-a3d.html#.readFrame">readFrame</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-a3d.html#.readMatrix">readMatrix</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-a3d.html#.readSignature">readSignature</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-fnt.html">fnt</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-fnt.html#.readCharacter">readCharacter</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-fnt.html#.readCharset">readCharset</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-fnt.html#.readSignature">readSignature</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-fpg.html">fpg</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-fpg.html#.readFile">readFile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-fpg.html#.readMap">readMap</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-fpg.html#.readSignature">readSignature</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-fpg.html#.writeFile">writeFile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-fpg.html#.writeMap">writeMap</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-fpg.html#.writeSignature">writeSignature</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-image.html">image</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-image.html#.findNearestColor">findNearestColor</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-image.html#.fromIndexed">fromIndexed</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-image.html#.toIndexed">toIndexed</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-io.html">io</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-map.html">map</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-map.html#.readPoint">readPoint</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-map.html#.readPoints">readPoints</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-map.html#.readSignature">readSignature</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-o3d.html">o3d</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readBoundingBox">readBoundingBox</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readColor">readColor</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readFace">readFace</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readFile">readFile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readFrame">readFrame</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readMaterial">readMaterial</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readMatrix">readMatrix</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readMesh">readMesh</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readSignature">readSignature</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readTape">readTape</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readVector2">readVector2</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readVector3">readVector3</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-o3d.html#.readVertex">readVertex</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-pal.html">pal</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.createColor">createColor</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.createColors">createColors</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.createRange">createRange</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.createRanges">createRanges</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.readColor">readColor</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.readColors">readColors</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.readFile">readFile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.readRange">readRange</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.readRanges">readRanges</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.readSignature">readSignature</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.writeColor">writeColor</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.writeColors">writeColors</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.writeFile">writeFile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.writeRange">writeRange</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.writeRanges">writeRanges</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pal.html#.writeSignature">writeSignature</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-pcm.html">pcm</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pcm.html#.readFile">readFile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-pcm.html#.writeFile">writeFile</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-wld.html">wld</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.createVPEFlag">createVPEFlag</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.createVPERegion">createVPERegion</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.createVPEVertex">createVPEVertex</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.createVPEWall">createVPEWall</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readFile">readFile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readFlag">readFlag</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readGeom">readGeom</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readRegion">readRegion</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readSignature">readSignature</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readVertex">readVertex</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readVPE">readVPE</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readVPEFlag">readVPEFlag</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readVPEForce">readVPEForce</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readVPERegion">readVPERegion</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readVPESignature">readVPESignature</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readVPEVertex">readVPEVertex</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readVPEWall">readVPEWall</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.readWall">readWall</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeFile">writeFile</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeFlag">writeFlag</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeGeom">writeGeom</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeRegion">writeRegion</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeSignature">writeSignature</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeVertex">writeVertex</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeVPE">writeVPE</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeVPEFlag">writeVPEFlag</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeVPEForce">writeVPEForce</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeVPERegion">writeVPERegion</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeVPESignature">writeVPESignature</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeVPEVertex">writeVPEVertex</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeVPEWall">writeVPEWall</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeWall">writeWall</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-wld.html#.writeWld">writeWld</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">o3d.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @module o3d
+ */
+
+/**
+ * Matriz de 4x4
+ * @typedef {Array&lt;number>} Matrix
+ * @property {number} 0
+ * @property {number} 1
+ * @property {number} 2
+ * @property {number} 3
+ * @property {number} 4
+ * @property {number} 5
+ * @property {number} 6
+ * @property {number} 7
+ * @property {number} 8
+ * @property {number} 9
+ * @property {number} 10
+ * @property {number} 11
+ * @property {number} 12
+ * @property {number} 13
+ * @property {number} 14
+ * @property {number} 15
+ */
+
+/**
+ * Vector de 2 dimensiones
+ * @typedef {Object} Vector2
+ * @property {number} u
+ * @property {number} v
+ */
+
+/**
+ * Vector de 3 dimensiones
+ * @typedef {Object} Vector3
+ * @property {number} x
+ * @property {number} y
+ * @property {number} z
+ */
+
+/**
+ * Color
+ * @typedef {Object} Color
+ * @property {number} r
+ * @property {number} g
+ * @property {number} b
+ */
+
+/**
+ * BoundingBox
+ * @typedef {Object} BoundingBox
+ * @property {Vector3} min
+ * @property {Vector3} max
+ */
+
+/**
+ * @typedef {Object} Material
+ * @property {Color} diffuse Color del difuso
+ * @property {Color} ambient Color del ambient
+ * @property {Color} specular Color del especular
+ * @property {number} transparency Transparencia
+ * @property {string} texture Nombre de la textura
+ * @property {MaterialType} type Tipo de material
+ */
+
+/**
+ * Vértice de un modelo
+ * @typedef {Object} Vertex
+ * @property {Vector3} position Posición del vértice
+ * @property {Vector3} normal Normal del vértice
+ * @property {Vector2} texture Posición de la textura del vértice
+ */
+
+/**
+ * Cara de un modelo
+ * @typedef {Object} Face
+ * @property {number} a Índice del primer vértice
+ * @property {number} b Índice del segundo vértice
+ * @property {number} c Índice del tercer vértice
+ * @property {number} material Índice del material
+ */
+
+/**
+ * Modelo 3D
+ * @typedef {Object} Mesh
+ * @property {number} numVertices Número de vértices
+ * @property {number} numFaces Número de caras
+ * @property {number} material Índice del material
+ * @property {string} name Nombre
+ * @property {BoundingBox} boundingBox Bounding box del objeto
+ * @property {Array&lt;Vertex>} vertices Vértices
+ * @property {Array&lt;Face>} faces Caras
+ */
+
+/**
+ * "Cinta americana" con la que tapar los agujeros entre objetos.
+ * @typedef {Object} Tape
+ * @property {number} startObject Índice del objeto inicial
+ * @property {number} startVertex Índice del vértice del objeto inicial
+ * @property {number} endObject Índice del objeto final
+ * @property {number} endVertex Índice del vértice del objeto final
+ * @property {number} linkMode Tipo de enlace
+ */
+
+/**
+ * Transformación de un objeto.
+ * @typedef {Object} Transform
+ * @property {Matrix} matrix
+ */
+
+/**
+ * Fotograma de una animación
+ * @typedef {Array&lt;Transform>} Frame
+ */
+
+/**
+ * Objeto 3D
+ * @typedef {Object} O3d
+ * @property {Signature} signature
+ * @property {number} version
+ * @property {number} num
+ * @property {number} offset
+ * @property {BoundingBox} boundingBox
+ * @property {Array&lt;Mesh>} objects
+ * @property {Array&lt;Material>} materials
+ * @property {Array&lt;BoundingBox>} dummies
+ * @property {Array&lt;Tape>} tapes
+ * @property {Array&lt;Frame>} frames
+ */
+
+/**
+ * Tipos de materiales
+ * @readonly
+ * @enum {number}
+ */
+export const MaterialType = {
+  /** Wireframe */
+  WIRE: 0,
+  /** Plano */
+  FLAT: 1,
+  /** Gouraud */
+  GOURAUD: 2,
+  /** Phong */
+  PHONG: 3,
+  /** Metal? */
+  METAL: 4
+}
+
+/**
+ * Lee la "firma" del archivo O3D
+ * @param {Reader} reader
+ * @returns {ArrayBufferView}
+ */
+export function readSignature(reader) {
+  return reader.readContents('O3D\x00')
+}
+
+/**
+ * Lee un vector de 2 coordenadas. Sólo se
+ * usa para las coordenadas de las texturas.
+ * @param {Reader} reader
+ * @returns {Vector2}
+ */
+export function readVector2(reader) {
+  const u = reader.readNumeric('f4le')
+  const v = reader.readNumeric('f4le')
+  return { u, v }
+}
+
+/**
+ * Devuelve un vector de 3 coordenadas. Se usa
+ * para las bounding boxes y las coordenadas de
+ * los triángulos.
+ * @param {Reader} reader
+ * @returns {Vector3}
+ */
+export function readVector3(reader) {
+  const x = reader.readNumeric('f4le')
+  const y = reader.readNumeric('f4le')
+  const z = reader.readNumeric('f4le')
+  return { x, y, z }
+}
+
+/**
+ * Devuelve un color. Esta función es distinta a la
+ * de `pal` ya que esta devuelve los componentes como
+ * floats.
+ * @param {Reader} reader
+ * @returns {Color}
+ */
+export function readColor(reader) {
+  const r = reader.readNumeric('f4le')
+  const g = reader.readNumeric('f4le')
+  const b = reader.readNumeric('f4le')
+  return { r, g, b }
+}
+
+/**
+ * Devuelve una bounding box.
+ * @param {Reader} reader
+ * @returns {BoundingBox}
+ */
+export function readBoundingBox(reader) {
+  const min = readVector3(reader)
+  const max = readVector3(reader)
+  return { min, max }
+}
+
+/**
+ * Devuelve un vértice.
+ * @param {Reader} reader
+ * @returns {Vertex}
+ */
+export function readVertex(reader) {
+  const position = readVector3(reader)
+  const normal = readVector3(reader)
+  const texture = readVector2(reader)
+  return { position, normal, texture }
+}
+
+/**
+ * Devuelve una cara de un objeto 3D.
+ * @param {Reader} reader
+ * @returns {Face}
+ */
+export function readFace(reader) {
+  const a = reader.readNumeric('s2le')
+  const b = reader.readNumeric('s2le')
+  const c = reader.readNumeric('s2le')
+  const material = reader.readNumeric('s2le')
+  return { a, b, c, material }
+}
+
+/**
+ * Devuelve un objeto 3D.
+ * @param {Reader} reader
+ * @returns {Mesh}
+ */
+export function readMesh(reader) {
+  const numVertices = reader.readNumeric('s2le')
+  const numFaces = reader.readNumeric('s2le')
+  const material = reader.readNumeric('s2le')
+  const name = reader.readFixedLengthString(20)
+  const boundingBox = readBoundingBox(reader)
+  const vertices = []
+  for (let index = 0; index &lt; numVertices; index++) {
+    vertices.push(readVertex(reader))
+  }
+  const faces = []
+  for (let index = 0; index &lt; numFaces; index++) {
+    faces.push(readFace(reader))
+  }
+  return {
+    numVertices,
+    numFaces,
+    material,
+    name,
+    boundingBox,
+    vertices,
+    faces
+  }
+}
+
+/**
+ * Devuelve un material.
+ * @param {Reader}
+ * @returns {Material}
+ */
+export function readMaterial(reader) {
+  const diffuse = readColor(reader)
+  const ambient = readColor(reader)
+  const specular = readColor(reader)
+  const transparency = reader.readNumeric('s4le')
+  const texture = reader.readFixedLengthString(16)
+  const type = reader.readNumeric('s4le')
+  return {
+    diffuse,
+    ambient,
+    specular,
+    transparency,
+    texture,
+    type
+  }
+}
+
+/**
+ * Devuelve la "cinta americana" del modelo. Estos
+ * "tapes" sirven para unir los diferentes objetos
+ * del modelo.
+ * @param {Reader} reader
+ * @returns {Tape}
+ */
+export function readTape(reader) {
+  const startObject = reader.readNumeric('s4le')
+  const startVertex = reader.readNumeric('s4le')
+  const endObject = reader.readNumeric('s4le')
+  const endVertex = reader.readNumeric('s4le')
+  const linkMode = reader.readNumeric('s4le')
+  return {
+    startObject,
+    startVertex,
+    endObject,
+    endVertex,
+    linkMode
+  }
+}
+
+/**
+ * Devuelve una matriz de 4x4.
+ * @param {Reader} reader
+ * @returns {Matrix}
+ */
+export function readMatrix(reader) {
+  const matrix = []
+  for (let index = 0; index &lt; 16; index++) {
+    matrix.push(reader.readNumeric('f4le'))
+  }
+  return matrix
+}
+
+/**
+ * Devuelve un fotograma.
+ * @param {Reader} reader
+ * @param {number} numObjects
+ * @returns {Frame}
+ */
+export function readFrame(reader, numObjects) {
+  const objects = []
+  for (let objectIndex = 0; objectIndex &lt; numObjects; objectIndex++) {
+    const matrix = readMatrix(reader)
+    objects.push({
+      matrix
+    })
+  }
+  return objects
+}
+
+/**
+ * Devuelve un objeto 3D.
+ * @param {Reader} reader
+ * @returns {O3d}
+ */
+export function readFile(reader) {
+  const signature = readSignature(reader)
+  const version = reader.readNumeric('s2le')
+  const num = {
+    objects: reader.readNumeric('s2le'),
+    materials: reader.readNumeric('s2le'),
+    dummies: reader.readNumeric('s2le'),
+    tapes: reader.readNumeric('s2le'),
+    frames: reader.readNumeric('s2le')
+  }
+  const offset = {
+    objects: reader.readNumeric('s4le'),
+    materials: reader.readNumeric('s4le'),
+    dummies: reader.readNumeric('s4le'),
+    tapes: reader.readNumeric('s4le'),
+    frames: reader.readNumeric('s4le')
+  }
+  const boundingBox = readBoundingBox(reader)
+  reader.offset = offset.objects
+  const objects = []
+  for (let index = 0; index &lt; num.objects; index++) {
+    objects.push(readMesh(reader))
+  }
+  reader.offset = offset.materials
+  const materials = []
+  for (let index = 0; index &lt; num.materials; index++) {
+    materials.push(readMaterial(reader))
+  }
+  reader.offset = offset.dummies
+  const dummies = []
+  for (let index = 0; index &lt; num.dummies; index++) {
+    dummies.push(readBoundingBox(reader))
+  }
+  reader.offset = offset.tapes
+  const tapes = []
+  for (let index = 0; index &lt; num.tapes; index++) {
+    tapes.push(readTape(reader))
+  }
+  reader.offset = offset.frames
+  const frames = []
+  for (let index = 0; index &lt; num.frames; index++) {
+    frames.push(readFrame(reader, num.objects))
+  }
+  return {
+    signature,
+    version,
+    num,
+    offset,
+    boundingBox,
+    objects,
+    materials,
+    dummies,
+    tapes,
+    frames
+  }
+}
+
+export default {
+  readSignature,
+  readColor,
+  readVector2,
+  readVector3,
+  readMatrix,
+  readMesh,
+  readVertex,
+  readFace,
+  readMaterial,
+  readTape,
+  readFrame,
+  readFile
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Tue Sep 29 2020 12:34:02 GMT+0200 (GMT+02:00) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
