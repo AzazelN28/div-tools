@@ -3,9 +3,14 @@ import Writer from './Writer'
 import Endian from './Endian'
 import Op from './Op'
 
-export default {
+/**
+ * @module io
+ */
+export const io = {
   Reader,
   Writer,
   Endian,
   Op
 }
+
+export default io

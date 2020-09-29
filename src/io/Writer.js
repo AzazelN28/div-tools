@@ -4,13 +4,46 @@ import Op from './Op'
 import Types from './Types'
 
 /**
+ * @module io
+ */
+
+/**
+ * Opciones que podemos pasar al método `createEstimator` a la hora
+ * de crear un `Estimator`.
+ * @typedef {object} WriterEstimatorOptions
+ * @property {Endian} [endian=Endian.BIG]
+ * @property {string} [encoding='utf-8']
+ * @property {boolean} [debug=false]
+ * @property {number} [offset=0]
+ */
+
+/**
+ * Opciones de un `Writer`
+ * @typedef {object} WriterOptions
+ * @property {DataView} dataView
+ * @property {Endian} [endian=Endian.BIG]
+ * @property {string} [encoding='utf-8']
+ * @property {number} [offset=0]
+ */
+
+/**
  * Esta clase nos permite escribir en un DataView
  */
-export default class Writer {
+export class Writer {
+  /**
+   * Crea un `Writer` que no escribirá nada. Esta clase es perfecta
+   * para poder obtener la longitud en bytes de lo que necesitamos escribir.
+   * @param {WriterEstimatorOptions} [estimatorOptions]
+   * @returns {Writer}
+   */
   static createEstimator({ endian = Endian.BIG, encoding = 'utf-8', debug = false, offset = 0 }) {
     return new Writer({ dataView: new DryDataView(debug), endian, encoding, offset })
   }
 
+  /**
+   * Constructor
+   * @param {WriterOptions} [options]
+   */
   constructor({
     dataView,
     endian = Endian.BIG,
@@ -23,18 +56,36 @@ export default class Writer {
     this.offset = offset
   }
 
+  /**
+   * Bytes que nos quedan disponibles hasta que se nos acabe el buffer
+   * donde estamos escribiendo.
+   * @type {number}
+   */
   get bytesAvailable() {
     return this.dataView.byteLength - this.offset
   }
 
+  /**
+   * Offset en bytes del DataView
+   * @type {number}
+   */
   get byteOffset() {
     return this.dataView.byteOffset
   }
 
+  /**
+   * Longitud en bytes del DataView
+   * @type {number}
+   */
   get byteLength() {
     return this.dataView.byteLength
   }
 
+  /**
+   * Escribimos un contenido en el buffer
+   * @param {string|Array} contents
+   * @returns {Writer}
+   */
   writeContents(contents) {
     if (typeof contents === 'string') {
       return this.writeContents(contents.split(''))
@@ -47,6 +98,12 @@ export default class Writer {
     return this
   }
 
+  /**
+   * Escribe una cadena de longitud fija.
+   * @param {number} size
+   * @param {string} string
+   * @returns {Writer}
+   */
   writeFixedLengthString(size, string) {
     const textEncoder = new TextEncoder(this.encoding)
     const encoded = textEncoder.encode(string)
@@ -61,6 +118,11 @@ export default class Writer {
     return this
   }
 
+  /**
+   * Escribe una cadena de longitud variable
+   * @param {string} string
+   * @returns {Writer}
+   */
   writeNullTerminatedString(string) {
     const textEncoder = new TextEncoder(this.encoding)
     const encoded = textEncoder.encode(string)
@@ -72,6 +134,12 @@ export default class Writer {
     return this
   }
 
+  /**
+   * Escribe un número.
+   * @param {NumericDescription} numericType
+   * @param {number} value
+   * @returns {Writer}
+   */
   writeNumeric(numericType, value) {
     const description = Types.getNumericDescription(numericType)
     if (!description) {
@@ -87,6 +155,12 @@ export default class Writer {
     return this
   }
 
+  /**
+   * Escribe un objeto.
+   * @param {Array<string>} sequence
+   * @param {object} object
+   * @returns {Writer}
+   */
   writeObject(sequence, object) {
     for (const item of sequence) {
       const { name, type, size } = item
@@ -132,3 +206,5 @@ export default class Writer {
     return this
   }
 }
+
+export default Writer

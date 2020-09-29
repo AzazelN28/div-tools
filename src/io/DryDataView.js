@@ -1,4 +1,16 @@
-export default class DryDataView {
+/**
+ * @module io
+ */
+
+/**
+ * Esta clase nos permite simular la escritura o la
+ * lectura de un archivo.
+ */
+export class DryDataView {
+  /**
+   * Constructor
+   * @param {boolean} debug Modo debug
+   */
   constructor(debug = false) {
     const getters = [
       'getBigInt64',
@@ -44,15 +56,29 @@ export default class DryDataView {
     }
   }
 
+  /**
+   * Buffer (siempre devuelve `null`)
+   * @type {ArrayBuffer}
+   */
   get buffer() {
     return null
   }
 
+  /**
+   * Devuelve la longitud en bytes
+   * @type {number}
+   */
   get byteLength() {
     return this._byteLength
   }
 
+  /**
+   * Devuelve el offset en bytes (siempre es 0)
+   * @type {number}
+   */
   get byteOffset() {
     return 0
   }
 }
+
+export default DryDataView

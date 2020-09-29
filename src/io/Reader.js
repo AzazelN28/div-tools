@@ -3,9 +3,25 @@ import Op from './Op'
 import Types from './Types'
 
 /**
+ * @module io
+ */
+
+/**
+ * @typedef {object} ReaderOptions
+ * @property {DataView} dataView
+ * @property {Endian} [endian=Endian.BIG]
+ * @property {string} [encoding='utf-8']
+ * @property {number} [offset=0]
+ */
+
+/**
  * Esta clase se encarga de leer de un DataView.
  */
-export default class Reader {
+export class Reader {
+  /**
+   * Constructor
+   * @param {ReaderOptions} [options]
+   */
   constructor({
     dataView,
     endian = Endian.BIG,
@@ -18,18 +34,35 @@ export default class Reader {
     this.offset = offset
   }
 
+  /**
+   * Bytes disponibles
+   * @type {number}
+   */
   get bytesAvailable() {
     return this.dataView.byteLength - this.offset
   }
 
+  /**
+   * Offset dentro del DataView
+   * @type {number}
+   */
   get byteOffset() {
     return this.dataView.byteOffset
   }
 
+  /**
+   * Longitud en bytes del DataView
+   * @type {number}
+   */
   get byteLength() {
     return this.dataView.byteLength
   }
 
+  /**
+   * Lee un contenido
+   * @param {string|Array} contents
+   * @returns {Uint8Array}
+   */
   readContents(contents) {
     if (typeof contents === 'string') {
       return this.readContents(contents.split(''))
@@ -45,6 +78,11 @@ export default class Reader {
     return contents
   }
 
+  /**
+   * Lee una cadena de longitud fija
+   * @param {number} size
+   * @returns {string}
+   */
   readFixedLengthString(size) {
     const end = this.offset + size
     const array = []
@@ -63,6 +101,10 @@ export default class Reader {
     return decoder.decode(typedArray)
   }
 
+  /**
+   * Lee una cadena de la que no sabemos la longitud
+   * @returns {string}
+   */
   readNullTerminatedString() {
     const array = []
     let charCode
@@ -100,6 +142,11 @@ export default class Reader {
     return value
   }
 
+  /**
+   * Devuelve un número
+   * @param {NumericDescription} numericType
+   * @returns {number}
+   */
   readNumeric(numericType) {
     const description = Types.getNumericDescription(numericType)
     if (!description) {
@@ -115,6 +162,11 @@ export default class Reader {
     return value
   }
 
+  /**
+   * Devuelve un objeto a partir de una lista de valores.
+   * @param {Array<string>} sequence
+   * @returns {Object}
+   */
   readObject(sequence) {
     const object = {}
     for (const item of sequence) {
@@ -136,3 +188,5 @@ export default class Reader {
     return object
   }
 }
+
+export default Reader
