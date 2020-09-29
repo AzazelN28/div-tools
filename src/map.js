@@ -1,11 +1,31 @@
 import { readColors, readRanges, writeColors, writeRanges } from './pal'
 
+/**
+ * @module map
+ */
+
+/**
+ * Firma de un archivo .map
+ * @constant {string}
+ */
+export const SIGNATURE = 'map\x1A\x0D\x0A\x00\x00'
+
+/**
+ * Lee un punto de control de un archivo .map
+ * @param {Reader} reader
+ * @returns {MapPoint}
+ */
 export function readPoint(reader) {
   const x = reader.readNumeric('s2le')
   const y = reader.readNumeric('s2le')
   return { x, y }
 }
 
+/**
+ * Lee todos los puntos de control de un archivo .map
+ * @param {Reader} reader
+ * @returns {Array<MapPoint>}
+ */
 export function readPoints(reader) {
   const numPoints = reader.readNumeric('u2le')
   const points = []
@@ -15,8 +35,13 @@ export function readPoints(reader) {
   return points
 }
 
+/**
+ *
+ * @param {Reader} reader
+ * @returns {MapSignature}
+ */
 export function readSignature(reader) {
-  return reader.readContents('map\x1A\x0D\x0A\x00\x00')
+  return reader.readContents(SIGNATURE)
 }
 
 export function readFile(reader) {
@@ -48,7 +73,7 @@ export function readFile(reader) {
 }
 
 export function writeSignature(writer) {
-  return writer.writeContents('map\x1A\x0D\x0A\x00\x00')
+  return writer.writeContents(SIGNATURE)
 }
 
 export function writePoints(writer, points) {

@@ -1,4 +1,8 @@
 /**
+ * @module image
+ */
+
+/**
  * Devuelve el color más cercano al indicado dentro de la
  * paleta de colores que hemos pasado.
  * @param {Array<Color>} palette

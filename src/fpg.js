@@ -1,10 +1,51 @@
 import { readColors, readRanges, writeColors, writeRanges } from './pal'
 import { readPoint, writePoint } from './map'
 
+/**
+ * @module fpg
+ */
+
+/**
+ * Mapa contenido dentro de un archivo .fpg
+ * @typedef {Object} Map
+ * @property {number} code
+ * @property {number} length
+ * @property {string} description
+ * @property {string} filename
+ * @property {number} width
+ * @property {number} height
+ * @property {Array<Point>} points
+ * @property {ArrayBuffer} pixels
+ */
+
+/**
+ *
+ * @typedef {Object} Fpg
+ * @property {Signature} signature,
+ * @property {Palette} palette
+ * @property {Array<Map>} maps
+ */
+
+/**
+ * "Firma" del archivo .fpg
+ * @constant {string}
+ */
+export const SIGNATURE = 'fpg\x1A\x0D\x0A\x00\x00'
+
+/**
+ * Devuelve la "firma" de un archivo .fpg
+ * @param {Reader} reader
+ * @returns {Signature}
+ */
 export function readSignature (reader) {
-  return reader.readContents('fpg\x1A\x0D\x0A\x00\x00')
+  return reader.readContents(SIGNATURE)
 }
 
+/**
+ * Lee un mapa dentro de un .fpg
+ * @param {Reader} reader
+ * @returns {Map}
+ */
 export function readMap (reader) {
   const code = reader.readNumeric('u4le')
   const length = reader.readNumeric('u4le')
@@ -30,6 +71,11 @@ export function readMap (reader) {
   }
 }
 
+/**
+ * Lee un .fpg
+ * @param {Reader} reader
+ * @returns {Fpg}
+ */
 export function readFile (reader) {
   const signature = readSignature(reader)
   const palette = {
@@ -48,10 +94,21 @@ export function readFile (reader) {
   }
 }
 
+/**
+ * Escribe la "firma" de un .fpg
+ * @param {Writer} writer
+ * @returns {Writer}
+ */
 export function writeSignature (writer) {
-  return writer.writeContents('fpg\x1A\x0D\x0A\x00\x00')
+  return writer.writeContents(SIGNATURE)
 }
 
+/**
+ * Escribe un mapa dentro del .fpg
+ * @param {Writer} writer
+ * @param {FpgMap} map
+ * @returns {Writer}
+ */
 export function writeMap (writer, { code, length, description, filename, width, height, points, pixels }) {
   writer
     .writeNumeric('u4le', code)
@@ -68,6 +125,12 @@ export function writeMap (writer, { code, length, description, filename, width, 
   return writer
 }
 
+/**
+ * Escribe un archivo .fpg
+ * @param {Writer} writer
+ * @param {Fpg} fpg
+ * @returns {Writer}
+ */
 export function writeFile (writer, fpg) {
   writeSignature(writer)
   writeColors(writer, fpg.palette.colors)
@@ -82,5 +145,7 @@ export default {
   readSignature,
   readMap,
   readFile,
+  writeSignature,
+  writeMap,
   writeFile
 }

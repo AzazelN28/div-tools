@@ -33,14 +33,14 @@ describe('WLD', () => {
     expect(level.geom.walls.length).to.be.equal(level.vpe.walls.length)
     expect(level.geom.flags.length).to.be.equal(level.vpe.flags.length)
 
-    for (const vertex of level.vpe.vertices) {
-      expect(vertex.type).to.be.equal(0)
-      expect(vertex.path).to.be.equal(-1)
-      expect(vertex.link).to.be.equal(-1)
-      // TODO: tengo que testear las coordenadas estas.
-      // expect(vertex.x).to.be.equal()
-      // zp[i].x=my_map->points[i]->x;  // Point x coordinate
-      // zp[i].y=FIN_GRID-my_map->points[i]->y;  // Point y coordinate OJO
+    for (let index = 0; index < level.vpe.vertices.length; index++) {
+      const vpeVertex = level.vpe.vertices[index]
+      const vertex = level.geom.vertices[index]
+      expect(vpeVertex.type).to.be.equal(0)
+      expect(vpeVertex.path).to.be.equal(-1)
+      expect(vpeVertex.link).to.be.equal(-1)
+      expect(vpeVertex.x).to.be.equal(vertex.x)
+      expect(vpeVertex.y).to.be.equal(wld.GRID_SIZE - vertex.y)
     }
 
     for (const region of level.vpe.regions) {
@@ -66,6 +66,5 @@ describe('WLD', () => {
     fixture.offset = estimator.byteLength + 12
     estimator.offset = 0
     wld.writeFile(estimator, fixture)
-    console.log(estimator.byteLength)
   })
 })

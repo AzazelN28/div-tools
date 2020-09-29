@@ -1,3 +1,7 @@
+/**
+ * @module pcm
+ */
+
 /** Número de velocidad de muestreo de un PCM */
 export const SAMPLE_RATE = 11025 // 11025 samples per second
 /** Número de bytes por muestra de un PCM */

@@ -1,9 +1,49 @@
 import { readColors, readRanges, writeColors, writeRanges } from './pal'
 
+/**
+ * @module fnt
+ */
+
+/**
+ * Conjunto de caracteres de la fuente .fnt
+ * @typedef {Object} Charset
+ * @property {number} numbers
+ * @property {number} uppercase
+ * @property {number} lowercase
+ * @property {number} symbols
+ * @property {number} extended
+ */
+
+/**
+ * Caracter de la fuente .fnt
+ * @typedef {Object} Character
+ * @property {number} width
+ * @property {number} height
+ * @property {number} incY
+ * @property {number} offset
+ * @property {number} pixels
+ */
+
+/**
+ * Firma del archivo .fnt
+ * @constant {string}
+ */
+export const SIGNATURE = 'fnt\x1A\x0D\x0A\x00\x00'
+
+/**
+ * Devuelve la firma de un archivo .fnt
+ * @param {Reader} reader
+ * @returns {Signature}
+ */
 export function readSignature (reader) {
-  return reader.readContents('fnt\x1A\x0D\x0A\x00\x00')
+  return reader.readContents(SIGNATURE)
 }
 
+/**
+ * Devuelve el conjunto de caracteres de una archivo .fnt
+ * @param {Reader} reader
+ * @returns {Charset}
+ */
 export function readCharset (reader) {
   const data = reader.readNumeric('u4le')
   const numbers = (data >> 5) & 0x01
@@ -20,6 +60,11 @@ export function readCharset (reader) {
   }
 }
 
+/**
+ * Devuelve un caracter de un archivo .fnt
+ * @param {Reader} reader
+ * @returns {Character}
+ */
 export function readCharacter (reader) {
   const width = reader.readNumeric('u4le')
   const height = reader.readNumeric('u4le')
@@ -61,7 +106,7 @@ export function readFile (reader) {
 }
 
 export function writeSignature(writer) {
-  return writer.readContents('fnt\x1A\x0D\x0A\x00\x00')
+  return writer.readContents(SIGNATURE)
 }
 
 export function writeCharset(writer, {
