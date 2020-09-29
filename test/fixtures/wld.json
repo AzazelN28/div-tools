@@ -104,7 +104,17 @@
     "vertices": [],
     "walls": [],
     "regions": [],
-    "flags": [],
+    "flags": [{
+      "x": 32,
+      "y": 30176
+    }],
+    "title": "Mapa1",
+    "palette": "paleta",
+    "textureScreen": 0,
+    "textureBack": 0,
+    "effect": "NO_NAME",
+    "angle": 120,
+    "view": 0,
     "force": {
       "x": 200,
       "y": 200,
