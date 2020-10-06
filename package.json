@@ -5,6 +5,7 @@
   "main": "dist/lib.js",
   "scripts": {
     "build": "rollup -c",
+    "minify": "terser dist/*.js",
     "lint": "eslint src/**/*.js",
     "docs": "jsdoc -R README.md -t node_modules/minami -d docs -r src",
     "docs:serve": "jsdoc -R README.md -t node_modules/minami -d docs -r src && serve docs",

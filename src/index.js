@@ -5,6 +5,7 @@ import fpg from './fpg.js'
 import map from './map.js'
 import pal from './pal.js'
 import wld from './wld.js'
+import pak from './pak.js'
 import pcm from './pcm.js'
 import image from './image.js'
 import io from './io/index.js'
@@ -17,6 +18,7 @@ export default {
   map,
   pal,
   wld,
+  pak,
   pcm,
   image,
   io
